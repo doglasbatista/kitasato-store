@@ -10,7 +10,7 @@ module.exports = {
     minimize: false,
   },
   output: {
-    publicPath: 'http://localhost:3001/',
+    publicPath: 'http://localhost:4000/',
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json'],
@@ -28,14 +28,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'compose',
-      library: {type: 'var', name: 'compose'},
-      filename: "remoteEntry.js",
-      remotes: {
-        product_list: 'product_list',
-        design_system: 'design_system',
+      name: 'design_system',
+      library: {type: 'var', name: 'design_system'},
+      filename: 'remoteEntry.js',
+      remotes: {},
+      exposes: {
+        Card: './src/components/Card/Card',
       },
-      exposes: {},
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),
     new HtmlWebpackPlugin({

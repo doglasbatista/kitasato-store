@@ -3,6 +3,8 @@ import {isEmpty} from 'ramda';
 
 import useGetProductsList from '../../hooks/useGetProductsList';
 
+import Card from 'design_system/Card';
+
 const ProductsList = () => {
   const {loading, productsList} = useGetProductsList();
 
@@ -14,7 +16,9 @@ const ProductsList = () => {
       {!loading &&
         !isEmpty(productsList) &&
         productsList.map(product => (
-          <div key={product.id}>{product.title} - {formatedPrice(product.price)}</div>
+          <Card key={product.id}>
+            {product.title} - {formatedPrice(product.price)}
+          </Card>
         ))}
     </div>
   );

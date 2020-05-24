@@ -31,7 +31,9 @@ module.exports = {
       name: 'product_list',
       library: {type: 'var', name: 'product_list'},
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        design_system: 'design_system',
+      },
       exposes: {
         App: './src/App'
       },
