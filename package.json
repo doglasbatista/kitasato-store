@@ -1,17 +1,12 @@
 {
   "name": "kitasato-store",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\""
   },
-  "workspaces": {
+  "workspaces": [
     "packages/*"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  ],
   "devDependencies": {
     "concurrently": "^5.2.0",
     "wsrun": "^5.2.0"
