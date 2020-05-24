@@ -10,7 +10,7 @@ module.exports = {
     minimize: false,
   },
   output: {
-    publicPath: 'http://localhost:3001/',
+    publicPath: 'http://localhost:3002/',
   },
   resolve: {
     extensions: ['.jsx', '.js', '.json'],
@@ -28,11 +28,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'compose',
-      library: {type: 'var', name: 'compose'},
-      remotes: {
-        productList: 'product-list',
-      },
+      name: 'product-list',
+      library: {type: 'var', name: 'product-list'},
+      remotes: {},
       exposes: {},
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),
