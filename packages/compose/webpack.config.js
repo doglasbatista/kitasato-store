@@ -30,8 +30,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'compose',
       library: {type: 'var', name: 'compose'},
+      filename: "remoteEntry.js",
       remotes: {
-        productList: 'product-list',
+        product_list: 'product_list',
       },
       exposes: {},
       shared: ['react', 'react-dom', 'react-router-dom'],

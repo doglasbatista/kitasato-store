@@ -28,10 +28,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'product-list',
-      library: {type: 'var', name: 'product-list'},
+      name: 'product_list',
+      library: {type: 'var', name: 'product_list'},
+      filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        App: './src/App'
+      },
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),
     new HtmlWebpackPlugin({
