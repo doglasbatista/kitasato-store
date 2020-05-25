@@ -11,7 +11,7 @@ import Button from 'design_system/Button';
 const ProductsList = () => {
   const {loading, productsList} = useGetProductsList();
 
-  const formatedPrice = price => `R$ ${price / 100}`;
+  const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
 
   return (
     <div
