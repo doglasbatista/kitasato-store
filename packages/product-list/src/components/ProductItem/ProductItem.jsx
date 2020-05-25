@@ -10,6 +10,9 @@ const ProductItem = ({product}) => {
   const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
 
   const addToCart = product => {
+    const addToCartEvent = new CustomEvent('addToCart', {detail: product});
+
+    window.dispatchEvent(addToCartEvent);
     setAddedToCart(true);
   };
 

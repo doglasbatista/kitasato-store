@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {map, uniq, append} from 'ramda';
 
 import {
   MiniCartList,
@@ -12,28 +13,47 @@ import {
 
 const MiniCart = () => {
   const [showList, setShowList] = useState(false);
+  const [productList, setProductList] = useState([]);
+
+  const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
+
+  const addToCart = event => {
+    setProductList(uniq(append(event.detail, productList)));
+  };
+
+  const productListSize = productList.length;
+
+  const miniCartTitle =
+    productListSize !== 0
+      ? `${productListSize} ${
+          productListSize === 1 ? 'item' : 'itens'
+        } no carrinho`
+      : 'Carrinho Vazio';
+
+  useEffect(() => {
+    window.addEventListener('addToCart', addToCart);
+    return () => window.removeEventListener('addToCart', addToCart);
+  });
 
   return (
     <Container
       onMouseEnter={() => setShowList(true)}
       onMouseLeave={() => setShowList(false)}>
-      <Title>2 itens do carrinho</Title>
-      {showList && (
+      <Title>{miniCartTitle}</Title>
+      {true && (
         <MiniCartList>
-          <MiniCartItem>
-            <ItemName>Vans ultrarange</ItemName>
-            <div>
-              <ItemPrice>R$ 559,69</ItemPrice>
-              <RemoveItemButton>x</RemoveItemButton>
-            </div>
-          </MiniCartItem>
-          <MiniCartItem>
-            <ItemName>All Star</ItemName>
-            <div>
-              <ItemPrice>R$ 289,89</ItemPrice>
-              <RemoveItemButton>x</RemoveItemButton>
-            </div>
-          </MiniCartItem>
+          {map(
+            product => (
+              <MiniCartItem key={product.id}>
+                <ItemName>{product.title}</ItemName>
+                <div>
+                  <ItemPrice>{formatedPrice(product.price)}</ItemPrice>
+                  <RemoveItemButton>x</RemoveItemButton>
+                </div>
+              </MiniCartItem>
+            ),
+            productList,
+          )}
         </MiniCartList>
       )}
     </Container>

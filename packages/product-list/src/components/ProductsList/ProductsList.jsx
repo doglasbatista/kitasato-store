@@ -1,5 +1,5 @@
 import React from 'react';
-import {isEmpty} from 'ramda';
+import {isEmpty, map} from 'ramda';
 
 import useGetProductsList from '../../hooks/useGetProductsList';
 
@@ -18,9 +18,10 @@ const ProductsList = () => {
       {loading && <p>Loading...</p>}
       {!loading &&
         !isEmpty(productsList) &&
-        productsList.map(product => (
-          <Productsitem key={product.id} product={product} />
-        ))}
+        map(
+          product => <Productsitem key={product.id} product={product} />,
+          productsList,
+        )}
     </div>
   );
 };
