@@ -30,12 +30,12 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'product_list',
       library: {type: 'var', name: 'product_list'},
-      filename: "remoteEntry.js",
+      filename: 'remoteEntry.js',
       remotes: {
         design_system: 'design_system',
       },
       exposes: {
-        App: './src/App'
+        App: './src/App',
       },
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),

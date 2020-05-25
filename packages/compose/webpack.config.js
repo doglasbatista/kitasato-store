@@ -30,7 +30,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'compose',
       library: {type: 'var', name: 'compose'},
-      filename: "remoteEntry.js",
+      filename: 'remoteEntry.js',
       remotes: {
         product_list: 'product_list',
         design_system: 'design_system',

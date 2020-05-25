@@ -34,6 +34,7 @@ module.exports = {
       remotes: {},
       exposes: {
         Card: './src/components/Card/Card',
+        GlobalStyle: './src/components/GlobalStyle/GlobalStyle',
       },
       shared: ['react', 'react-dom', 'react-router-dom'],
     }),

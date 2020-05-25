@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Card = ({children}) => <div>{children}</div>;
+import { Container } from './Card.styles';
+
+const Card = ({children}) => <Container>{children}</Container>;
 
 export default Card;
