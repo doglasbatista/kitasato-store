@@ -7,13 +7,14 @@ import {
   ItemPrice,
   RemoveItemButton,
   Title,
+  Container,
 } from './MiniCart.style';
 
 const MiniCart = () => {
   const [showList, setShowList] = useState(false);
 
   return (
-    <div
+    <Container
       onMouseEnter={() => setShowList(true)}
       onMouseLeave={() => setShowList(false)}>
       <Title>2 itens do carrinho</Title>
@@ -35,7 +36,7 @@ const MiniCart = () => {
           </MiniCartItem>
         </MiniCartList>
       )}
-    </div>
+    </Container>
   );
 };
 

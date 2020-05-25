@@ -47,9 +47,13 @@ const RemoveItemButton = styled.button`
 
   &:hover,
   &:focus {
-    transition: .2s ease-in;
-    color: rgba(238, 119, 127, 0.46)
+    transition: 0.2s ease-in;
+    color: rgba(238, 119, 127, 0.46);
   }
+`;
+
+const Container = styled.div`
+  height: fit-content;
 `;
 
 export {
@@ -59,4 +63,5 @@ export {
   ItemPrice,
   Title,
   RemoveItemButton,
+  Container,
 };
