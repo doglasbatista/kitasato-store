@@ -2,15 +2,26 @@ import React from 'react';
 
 const GlobalStyle = React.lazy(() => import('design_system/GlobalStyle'));
 const ProductList = React.lazy(() => import('product_list/App'));
+const MiniCart = React.lazy(() => import('mini_cart/App'));
 
 const App = () => {
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: '1fr 300px',
+        gridGap: '50px',
+      }}>
       <React.Suspense fallback={<p>Loading Card...</p>}>
         <GlobalStyle />
       </React.Suspense>
       <React.Suspense fallback={<p>Loading products...</p>}>
         <ProductList />
+      </React.Suspense>
+      <React.Suspense fallback={<p>Loading MiniCart...</p>}>
+        <MiniCart />
       </React.Suspense>
     </div>
   )

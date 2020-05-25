@@ -16,7 +16,7 @@ const ProductsList = () => {
   return (
     <div
       style={{
-        margin: '16px 8px',
+        margin: '0 auto',
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridGap: '8px',
@@ -27,8 +27,8 @@ const ProductsList = () => {
         !isEmpty(productsList) &&
         productsList.map(product => (
           <Card key={product.id}>
-            <CardTitle>{product.title}</CardTitle>
             <Image imagePath={product.imagePath} />
+            <CardTitle>{product.title}</CardTitle>
             <p
               style={{
                 color: 'rgba(238, 119, 127, 0.46)',

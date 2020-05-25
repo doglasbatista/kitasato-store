@@ -34,6 +34,7 @@ module.exports = {
       remotes: {
         product_list: 'product_list',
         design_system: 'design_system',
+        mini_cart: 'mini_cart',
       },
       exposes: {},
       shared: ['react', 'react-dom', 'react-router-dom'],
