@@ -26,6 +26,7 @@ const ItemPrice = styled.span`
 `;
 
 const Title = styled.span`
+  cursor: default;
   font-size: 24px;
   letter-spacing: .09em;
   color: #1d2343;

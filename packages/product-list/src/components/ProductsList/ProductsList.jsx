@@ -16,11 +16,9 @@ const ProductsList = () => {
   return (
     <div
       style={{
-        margin: '0 auto',
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
         gridGap: '8px',
-        maxWidth: '900px',
       }}>
       {loading && <p>Loading...</p>}
       {!loading &&
