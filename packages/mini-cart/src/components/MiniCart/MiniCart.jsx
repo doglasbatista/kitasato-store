@@ -70,7 +70,7 @@ const MiniCart = () => {
       {!loading && (
         <>
           <Title>{miniCartTitle}</Title>
-          {true && (
+          {showList && (
             <MiniCartList>
               {map(
                 product => (
