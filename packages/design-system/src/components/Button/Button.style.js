@@ -12,8 +12,13 @@ const Btn = styled.button`
   width: 100%;
   transition: .2s ease-in;
 
-  &:hover,
-  &:focus {
+  &:disabled {
+    background-color: #C1C1C1;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
     transition: .2s ease-in;
     background: rgba(238, 119, 127, 0.46)
   }

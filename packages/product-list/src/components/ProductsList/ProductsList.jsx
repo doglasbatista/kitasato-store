@@ -3,15 +3,10 @@ import {isEmpty} from 'ramda';
 
 import useGetProductsList from '../../hooks/useGetProductsList';
 
-import Card from 'design_system/Card';
-import CardTitle from 'design_system/CardTitle';
-import Image from 'design_system/Image';
-import Button from 'design_system/Button';
+import Productsitem from '../ProductItem/ProductItem';
 
 const ProductsList = () => {
   const {loading, productsList} = useGetProductsList();
-
-  const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
 
   return (
     <div
@@ -24,21 +19,7 @@ const ProductsList = () => {
       {!loading &&
         !isEmpty(productsList) &&
         productsList.map(product => (
-          <Card key={product.id}>
-            <Image imagePath={product.imagePath} />
-            <CardTitle>{product.title}</CardTitle>
-            <p
-              style={{
-                color: 'rgba(238, 119, 127, 0.46)',
-                fontSize: '18px',
-                fontWeight: '700',
-                textAlign: 'right',
-                margin: '16px 0',
-              }}>
-              {formatedPrice(product.price)}
-            </p>
-            <Button>Adicionar ao carrinho</Button>
-          </Card>
+          <Productsitem key={product.id} product={product} />
         ))}
     </div>
   );
