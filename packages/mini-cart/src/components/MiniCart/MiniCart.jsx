@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {map, uniq, append, concat} from 'ramda';
+import {map, uniq, append, concat, reject} from 'ramda';
 
 import useGetMiniCartData from '../../hooks/useGetMiniCartData';
 
@@ -26,6 +26,18 @@ const MiniCart = () => {
 
   const addToCart = event => {
     setProductList(uniq(append(event.detail, productList)));
+  };
+
+  const removeItemFromCart = product => {
+    setProductList(
+      reject(productItem => productItem.id === product.id, productList),
+    );
+
+    const removeItemFromCartEvent = new CustomEvent('removeItemFromCart', {
+      detail: product,
+    });
+
+    window.dispatchEvent(removeItemFromCartEvent);
   };
 
   const productListSize = productList.length;
@@ -58,7 +70,10 @@ const MiniCart = () => {
                     <ItemName>{product.title}</ItemName>
                     <div>
                       <ItemPrice>{formatedPrice(product.price)}</ItemPrice>
-                      <RemoveItemButton>x</RemoveItemButton>
+                      <RemoveItemButton
+                        onClick={() => removeItemFromCart(product)}>
+                        x
+                      </RemoveItemButton>
                     </div>
                   </MiniCartItem>
                 ),
