@@ -14,7 +14,7 @@ const MiniCartItem = styled.li`
 `;
 const ItemName = styled.span`
   color: #1d2343;
-  font-weight: 700;
+  font-weight: 200;
 `;
 
 const ItemPrice = styled.span`
@@ -56,6 +56,18 @@ const Container = styled.div`
   height: fit-content;
 `;
 
+const OrderSummary = styled.li`
+  padding: 16px 8px;
+  color: #1d2343;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const OrderTotal = styled.span``;
+
 export {
   MiniCartList,
   MiniCartItem,
@@ -64,4 +76,6 @@ export {
   Title,
   RemoveItemButton,
   Container,
+  OrderSummary,
+  OrderTotal,
 };

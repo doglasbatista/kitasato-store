@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {map, uniq, append, concat, reject} from 'ramda';
+import {prop, sum, reduce, pipe, map, uniq, append, concat, reject} from 'ramda';
 
 import useGetMiniCartData from '../../hooks/useGetMiniCartData';
 
@@ -11,6 +11,8 @@ import {
   RemoveItemButton,
   Title,
   Container,
+  OrderSummary,
+  OrderTotal,
 } from './MiniCart.style';
 
 const MiniCart = () => {
@@ -57,6 +59,12 @@ const MiniCart = () => {
         } no carrinho`
       : 'Carrinho Vazio';
 
+  const orderTotal = pipe(
+    map(prop('price')),
+    sum,
+    formatedPrice,
+  )(productList);
+
   useEffect(() => {
     window.addEventListener('addToCart', addToCart);
     return () => window.removeEventListener('addToCart', addToCart);
@@ -87,6 +95,9 @@ const MiniCart = () => {
                 ),
                 productList,
               )}
+              <OrderSummary>
+                <span>Total:</span> <ItemPrice>{orderTotal}</ItemPrice>
+              </OrderSummary>
             </MiniCartList>
           )}
         </>
