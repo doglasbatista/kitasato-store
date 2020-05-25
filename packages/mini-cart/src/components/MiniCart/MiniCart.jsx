@@ -48,7 +48,7 @@ const MiniCart = () => {
       onMouseLeave={() => setShowList(false)}>
       {loading && <p>Loading...</p>}
       {!loading && (
-        <div>
+        <>
           <Title>{miniCartTitle}</Title>
           {true && (
             <MiniCartList>
@@ -66,7 +66,7 @@ const MiniCart = () => {
               )}
             </MiniCartList>
           )}
-        </div>
+        </>
       )}
     </Container>
   );
