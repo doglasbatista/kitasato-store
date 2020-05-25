@@ -5,6 +5,7 @@ import {
   MiniCartItem,
   ItemName,
   ItemPrice,
+  RemoveItemButton,
   Title,
 } from './MiniCart.style';
 
@@ -12,21 +13,25 @@ const MiniCart = () => {
   const [showList, setShowList] = useState(false);
 
   return (
-    <div>
-      <Title
-        onMouseEnter={() => setShowList(true)}
-        onMouseLeave={() => setShowList(false)}>
-        2 itens do carrinho
-      </Title>
+    <div
+      onMouseEnter={() => setShowList(true)}
+      onMouseLeave={() => setShowList(false)}>
+      <Title>2 itens do carrinho</Title>
       {showList && (
         <MiniCartList>
           <MiniCartItem>
             <ItemName>Vans ultrarange</ItemName>
-            <ItemPrice>R$ 559,69</ItemPrice>
+            <div>
+              <ItemPrice>R$ 559,69</ItemPrice>
+              <RemoveItemButton>x</RemoveItemButton>
+            </div>
           </MiniCartItem>
           <MiniCartItem>
             <ItemName>All Star</ItemName>
-            <ItemPrice>R$ 289,89</ItemPrice>
+            <div>
+              <ItemPrice>R$ 289,89</ItemPrice>
+              <RemoveItemButton>x</RemoveItemButton>
+            </div>
           </MiniCartItem>
         </MiniCartList>
       )}

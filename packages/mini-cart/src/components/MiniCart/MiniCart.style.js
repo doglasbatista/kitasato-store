@@ -28,11 +28,35 @@ const ItemPrice = styled.span`
 const Title = styled.span`
   cursor: default;
   font-size: 24px;
-  letter-spacing: .09em;
+  letter-spacing: 0.09em;
   color: #1d2343;
   margin-bottom: 8px;
   display: block;
   text-align: center;
 `;
 
-export {MiniCartList, MiniCartItem, ItemName, ItemPrice, Title};
+const RemoveItemButton = styled.button`
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ee777f;
+  font-size: 18px;
+  margin-left: 8px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    transition: .2s ease-in;
+    color: rgba(238, 119, 127, 0.46)
+  }
+`;
+
+export {
+  MiniCartList,
+  MiniCartItem,
+  ItemName,
+  ItemPrice,
+  Title,
+  RemoveItemButton,
+};
