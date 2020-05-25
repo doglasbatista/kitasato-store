@@ -1,5 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {prop, sum, reduce, pipe, map, uniq, append, concat, reject} from 'ramda';
+import {
+  prop,
+  sum,
+  reduce,
+  pipe,
+  map,
+  uniq,
+  append,
+  concat,
+  reject,
+} from 'ramda';
 
 import useGetMiniCartData from '../../hooks/useGetMiniCartData';
 
@@ -17,7 +27,6 @@ import {
 
 const MiniCart = () => {
   const {loading, miniCartData} = useGetMiniCartData();
-  const [showList, setShowList] = useState(false);
   const [productList, setProductList] = useState([]);
 
   const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
@@ -59,11 +68,7 @@ const MiniCart = () => {
         } no carrinho`
       : 'Carrinho Vazio';
 
-  const orderTotal = pipe(
-    map(prop('price')),
-    sum,
-    formatedPrice,
-  )(productList);
+  const orderTotal = pipe(map(prop('price')), sum, formatedPrice)(productList);
 
   useEffect(() => {
     window.addEventListener('addToCart', addToCart);
@@ -71,35 +76,31 @@ const MiniCart = () => {
   });
 
   return (
-    <Container
-      onMouseEnter={() => setShowList(true)}
-      onMouseLeave={() => setShowList(false)}>
+    <Container>
       {loading && <p>Loading...</p>}
       {!loading && (
         <>
           <Title>{miniCartTitle}</Title>
-          {showList && (
-            <MiniCartList>
-              {map(
-                product => (
-                  <MiniCartItem key={product.id}>
-                    <ItemName>{product.title}</ItemName>
-                    <div>
-                      <ItemPrice>{formatedPrice(product.price)}</ItemPrice>
-                      <RemoveItemButton
-                        onClick={() => removeItemFromCart(product)}>
-                        x
-                      </RemoveItemButton>
-                    </div>
-                  </MiniCartItem>
-                ),
-                productList,
-              )}
-              <OrderSummary>
-                <span>Total:</span> <ItemPrice>{orderTotal}</ItemPrice>
-              </OrderSummary>
-            </MiniCartList>
-          )}
+          <MiniCartList>
+            {map(
+              product => (
+                <MiniCartItem key={product.id}>
+                  <ItemName>{product.title}</ItemName>
+                  <div>
+                    <ItemPrice>{formatedPrice(product.price)}</ItemPrice>
+                    <RemoveItemButton
+                      onClick={() => removeItemFromCart(product)}>
+                      x
+                    </RemoveItemButton>
+                  </div>
+                </MiniCartItem>
+              ),
+              productList,
+            )}
+            <OrderSummary>
+              <span>Total:</span> <ItemPrice>{orderTotal}</ItemPrice>
+            </OrderSummary>
+          </MiniCartList>
         </>
       )}
     </Container>
