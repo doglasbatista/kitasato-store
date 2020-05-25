@@ -21,15 +21,15 @@ const MiniCart = () => {
   const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
 
   useEffect(() => {
-    setProductList(uniq(concat(miniCartData, productList)));
+    const updateMiniCartDataEvent = new CustomEvent('updateMiniCartData', {
+      detail: productList,
+    });
 
-    const retrievingItemsFromTheCartEvent = new CustomEvent(
-      'retrievingItemsFromTheCart',
-      {
-        detail: miniCartData,
-      },
-    );
-    window.dispatchEvent(retrievingItemsFromTheCartEvent);
+    window.dispatchEvent(updateMiniCartDataEvent);
+  }, [productList]);
+
+  useEffect(() => {
+    setProductList(uniq(concat(miniCartData, productList)));
   }, [miniCartData]);
 
   const addToCart = event => {

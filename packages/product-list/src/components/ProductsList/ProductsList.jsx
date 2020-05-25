@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {isEmpty, map} from 'ramda';
+import {isEmpty, map, uniq, concat, includes} from 'ramda';
 
 import useGetProductsList from '../../hooks/useGetProductsList';
 
@@ -13,27 +13,24 @@ const ProductsList = () => {
     console.log('removeItemFromCart ', event.detail);
   };
 
-  const retrievingItemsFromTheCart = event => {
-    console.log('retrievingItemsFromTheCart ', event.detail);
-  };
-
   useEffect(() => {
     window.addEventListener('removeItemFromCart', removeItemFromCart);
     return () =>
       window.removeEventListener('removeItemFromCart', removeItemFromCart);
   });
 
+  const updateMiniCartData = event => {
+    setProductsInTheMiniCart(uniq(concat(event.detail, productsInTheMiniCart)));
+  };
+
   useEffect(() => {
-    window.addEventListener(
-      'retrievingItemsFromTheCart',
-      retrievingItemsFromTheCart,
-    );
+    window.addEventListener('updateMiniCartData', updateMiniCartData);
     return () =>
-      window.removeEventListener(
-        'retrievingItemsFromTheCart',
-        retrievingItemsFromTheCart,
-      );
+      window.removeEventListener('updateMiniCartData', updateMiniCartData);
   });
+
+  const isProductAddedToCart = product =>
+    includes(product, productsInTheMiniCart);
 
   return (
     <div
@@ -46,7 +43,13 @@ const ProductsList = () => {
       {!loading &&
         !isEmpty(productsList) &&
         map(
-          product => <Productsitem key={product.id} product={product} />,
+          product => (
+            <Productsitem
+              key={product.id}
+              product={product}
+              addedToCart={isProductAddedToCart(product)}
+            />
+          ),
           productsList,
         )}
     </div>

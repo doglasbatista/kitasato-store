@@ -5,15 +5,13 @@ import CardTitle from 'design_system/CardTitle';
 import Image from 'design_system/Image';
 import Button from 'design_system/Button';
 
-const ProductItem = ({product}) => {
-  const [addedToCart, setAddedToCart] = useState(false);
+const ProductItem = ({addedToCart, product}) => {
   const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
 
   const addToCart = product => {
     const addToCartEvent = new CustomEvent('addToCart', {detail: product});
 
     window.dispatchEvent(addToCartEvent);
-    setAddedToCart(true);
   };
 
   return (
