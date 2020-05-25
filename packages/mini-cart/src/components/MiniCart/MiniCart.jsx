@@ -22,6 +22,14 @@ const MiniCart = () => {
 
   useEffect(() => {
     setProductList(uniq(concat(miniCartData, productList)));
+
+    const retrievingItemsFromTheCartEvent = new CustomEvent(
+      'retrievingItemsFromTheCart',
+      {
+        detail: miniCartData,
+      },
+    );
+    window.dispatchEvent(retrievingItemsFromTheCartEvent);
   }, [miniCartData]);
 
   const addToCart = event => {
