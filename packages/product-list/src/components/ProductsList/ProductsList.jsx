@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {isEmpty, map, uniq, concat, includes} from 'ramda';
+import {reject, isEmpty, map, uniq, concat, includes} from 'ramda';
 
 import useGetProductsList from '../../hooks/useGetProductsList';
 
@@ -10,7 +10,12 @@ const ProductsList = () => {
   const [productsInTheMiniCart, setProductsInTheMiniCart] = useState([]);
 
   const removeItemFromCart = event => {
-    console.log('removeItemFromCart ', event.detail);
+    setProductsInTheMiniCart(
+      reject(
+        productItem => productItem.id === event.detail.id,
+        productsInTheMiniCart,
+      ),
+    );
   };
 
   useEffect(() => {
