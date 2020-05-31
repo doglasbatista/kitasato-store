@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "serve dist -p 3001",
+    "serve": "webpack-dev-server --config=webpack.config.js --mode development --hot",
+    "build": "webpack --mode production",
     "start": "webpack --watch"
   },
   "keywords": [],
@@ -21,5 +22,8 @@
     "serve": "^11.3.1",
     "webpack": "^5.0.0-beta.16",
     "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
   }
 }

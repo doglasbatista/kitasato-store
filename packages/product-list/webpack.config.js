@@ -6,6 +6,12 @@ module.exports = {
   cache: false,
   mode: 'development',
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true,
+    port: 3002,
+  },
   optimization: {
     minimize: false,
   },
@@ -41,6 +47,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      main: ['main'],
     }),
   ],
 };

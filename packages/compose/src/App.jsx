@@ -1,17 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 
-import Home from './pages/Home';
+import Routes from './Routes';
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+      <Routes />
   );
 };
 

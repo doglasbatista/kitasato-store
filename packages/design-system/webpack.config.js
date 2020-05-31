@@ -6,6 +6,12 @@ module.exports = {
   cache: false,
   mode: 'development',
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true,
+    port: 4000,
+  },
   optimization: {
     minimize: false,
   },

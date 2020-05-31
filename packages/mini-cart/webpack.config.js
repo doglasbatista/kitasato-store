@@ -6,6 +6,12 @@ module.exports = {
   cache: false,
   mode: 'development',
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true,
+    port: 3003,
+  },
   optimization: {
     minimize: false,
   },
@@ -32,7 +38,6 @@ module.exports = {
       library: {type: 'var', name: 'mini_cart'},
       filename: 'remoteEntry.js',
       remotes: {
-        design_system: 'design_system',
       },
       exposes: {
         App: './src/App',
@@ -41,6 +46,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      main: ['main'],
     }),
   ],
 };

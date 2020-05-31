@@ -6,6 +6,12 @@ module.exports = {
   cache: false,
   mode: 'development',
   devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true,
+    port: 3001,
+  },
   optimization: {
     minimize: false,
   },
@@ -33,7 +39,6 @@ module.exports = {
       filename: 'remoteEntry.js',
       remotes: {
         product_list: 'product_list',
-        design_system: 'design_system',
         mini_cart: 'mini_cart',
       },
       exposes: {},

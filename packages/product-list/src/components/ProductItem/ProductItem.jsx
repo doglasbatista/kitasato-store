@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-import Card from 'design_system/Card';
-import CardTitle from 'design_system/CardTitle';
-import Image from 'design_system/Image';
-import Button from 'design_system/Button';
+// import Card from 'design_system/Card';
+// import CardTitle from 'design_system/CardTitle';
+// import Image from 'design_system/Image';
+// import Button from 'design_system/Button';
 
 const ProductItem = ({addedToCart, product}) => {
   const formatedPrice = price => `R$ ${price / 100}`.replace('.', ',');
@@ -15,9 +15,9 @@ const ProductItem = ({addedToCart, product}) => {
   };
 
   return (
-    <Card key={product.id}>
-      <Image imagePath={product.imagePath} />
-      <CardTitle>{product.title}</CardTitle>
+    <div key={product.id}>
+      <img src={product.imagePath} />
+      <div>{product.title}</div>
       <p
         style={{
           color: 'rgba(238, 119, 127, 0.46)',
@@ -28,10 +28,10 @@ const ProductItem = ({addedToCart, product}) => {
         }}>
         {formatedPrice(product.price)}
       </p>
-      <Button action={() => addToCart(product)} disabled={addedToCart}>
+      <button action={() => addToCart(product)} disabled={addedToCart}>
         {addedToCart ? 'Adicionado ao carrinho' : 'Adicionar ao carrinho'}
-      </Button>
-    </Card>
+      </button>
+    </div>
   );
 };
 
