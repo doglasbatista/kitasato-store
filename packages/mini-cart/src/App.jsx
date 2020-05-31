@@ -1,13 +1,16 @@
 import React from 'react';
 
-import GlobalStyle from 'design_system/GlobalStyle';
+// import GlobalStyle from 'design_system/GlobalStyle';
+const GlobalStyle = React.lazy(() => import('design_system/GlobalStyle'));
 
 import MiniCart from './components/MiniCart/MiniCart';
 
 const App = () => {
   return (
     <>
-      <GlobalStyle />
+      <React.Suspense fallback={<p>Loading Card...</p>}>
+        <GlobalStyle />
+      </React.Suspense>
       <MiniCart />
     </>
   );
